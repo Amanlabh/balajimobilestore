@@ -1,0 +1,315 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+		<script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+		<script type="text/javascript">
+			window.tailwind.config = {
+				darkMode: ['class'],
+				theme: {
+					extend: {
+						colors: {
+							border: 'hsl(var(--border))',
+							input: 'hsl(var(--input))',
+							ring: 'hsl(var(--ring))',
+							background: 'hsl(var(--background))',
+							foreground: 'hsl(var(--foreground))',
+							primary: {
+								DEFAULT: 'hsl(var(--primary))',
+								foreground: 'hsl(var(--primary-foreground))'
+							},
+							secondary: {
+								DEFAULT: 'hsl(var(--secondary))',
+								foreground: 'hsl(var(--secondary-foreground))'
+							},
+							destructive: {
+								DEFAULT: 'hsl(var(--destructive))',
+								foreground: 'hsl(var(--destructive-foreground))'
+							},
+							muted: {
+								DEFAULT: 'hsl(var(--muted))',
+								foreground: 'hsl(var(--muted-foreground))'
+							},
+							accent: {
+								DEFAULT: 'hsl(var(--accent))',
+								foreground: 'hsl(var(--accent-foreground))'
+							},
+							popover: {
+								DEFAULT: 'hsl(var(--popover))',
+								foreground: 'hsl(var(--popover-foreground))'
+							},
+							card: {
+								DEFAULT: 'hsl(var(--card))',
+								foreground: 'hsl(var(--card-foreground))'
+							},
+						},
+					}
+				}
+			}
+		</script>
+		<style type="text/tailwindcss">
+			@layer base {
+				:root {
+					--background: 0 0% 100%;
+--foreground: 240 10% 3.9%;
+--card: 0 0% 100%;
+--card-foreground: 240 10% 3.9%;
+--popover: 0 0% 100%;
+--popover-foreground: 240 10% 3.9%;
+--primary: 240 5.9% 10%;
+--primary-foreground: 0 0% 98%;
+--secondary: 240 4.8% 95.9%;
+--secondary-foreground: 240 5.9% 10%;
+--muted: 240 4.8% 95.9%;
+--muted-foreground: 240 3.8% 46.1%;
+--accent: 240 4.8% 95.9%;
+--accent-foreground: 240 5.9% 10%;
+--destructive: 0 84.2% 60.2%;
+--destructive-foreground: 0 0% 98%;
+--border: 240 5.9% 90%;
+--input: 240 5.9% 90%;
+--ring: 240 5.9% 10%;
+--radius: 0.5rem;
+				}
+				.dark {
+					--background: 240 10% 3.9%;
+--foreground: 0 0% 98%;
+--card: 240 10% 3.9%;
+--card-foreground: 0 0% 98%;
+--popover: 240 10% 3.9%;
+--popover-foreground: 0 0% 98%;
+--primary: 0 0% 98%;
+--primary-foreground: 240 5.9% 10%;
+--secondary: 240 3.7% 15.9%;
+--secondary-foreground: 0 0% 98%;
+--muted: 240 3.7% 15.9%;
+--muted-foreground: 240 5% 64.9%;
+--accent: 240 3.7% 15.9%;
+--accent-foreground: 0 0% 98%;
+--destructive: 0 62.8% 30.6%;
+--destructive-foreground: 0 0% 98%;
+--border: 240 3.7% 15.9%;
+--input: 240 3.7% 15.9%;
+--ring: 240 4.9% 83.9%;
+				}
+			}
+		</style>
+  </head>
+  <body>
+
+    <!--navbar-->
+	<div class="bg-background text-foreground flex justify-between items-center p-4 shadow-lg">
+		<div class="flex items-center space-x-2"><span class="font-bold text-lg text-primary">Balaji mobile</span><span class="text-lg">zone</span></div>
+		<div class="hidden md:flex items-center space-x-6">
+		  <a onclick="window.location.href = 'mobile.html'" class="hover:text-muted-foreground">Buy mobile phones</a>
+		  <a onclick="window.location.href = 'home.html'"   class="hover:text-muted-foreground">Buy Home appliances</a>
+		  <a onclick="window.location.href = 'asscesories.html'" class="hover:text-muted-foreground">Buy Mobile accessories</a>
+		  <a href="#" class="hover:text-muted-foreground">Pricing</a>
+      <a onclick="window.location.href = 'index.html'" class="hover:text-muted-foreground">Home</a>
+		  
+		  <button class="bg-primary text-primary-foreground px-4 py-2 rounded-full hover:bg-primary/80">contact us</button>
+		  <img aria-hidden="true" alt="globe-icon" src="https://openui.fly.dev/openui/24x24.svg?text=🌐" />
+		</div>
+		<div class="md:hidden">
+		  <button id="menu-toggle" class="text-primary focus:outline-none">
+			<img aria-hidden="true" alt="menu-icon" src="https://openui.fly.dev/openui/24x24.svg?text=☰" />
+		  </button>
+		</div>
+	  </div>
+	  
+	  <div id="mobile-menu" class="md:hidden bg-background text-foreground p-4 space-y-4 hidden">
+		<a onclick="window.location.href = 'mobile.html'" class="block hover:text-muted-foreground">Buy mobile phones</a>
+		<a onclick="window.location.href = 'home.html'"  class="block hover:text-muted-foreground">Buy Home appliances</a>
+		<a onclick="window.location.href = 'asscesories.html'" class="block hover:text-muted-foreground">Buy Mobile accessoriesS</a>
+		<a href="#" class="block hover:text-muted-foreground">Pricing</a>
+    <a onclick="window.location.href = 'index.html'" class="block hover:text-muted-foreground">Home</a>
+		
+	  </div>
+	  <script>
+		document.getElementById('menu-toggle').addEventListener('click', function() {
+		  const menu = document.getElementById('mobile-menu');
+		  menu.classList.toggle('hidden');
+		});
+	  </script>
+    </div>
+
+    <!--assecories-->
+    <div class="p-4">
+  <h2 class="text-2xl font-bold">Accessories</h2>
+  <p class="text-muted-foreground"></p>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mt-4">
+    
+    <div class="border p-4 rounded-lg shadow-sm">
+      <img src="https://m.media-amazon.com/images/I/71AxjG3lIlL._AC_UF350,350_QL80_.jpg" alt="MOSKING TPU Back Cover for Samsung Galaxy S23 Ultra 5G" class="w-full h-48 object-cover mb-4">
+      <p class="text-sm text-muted-foreground">Sponsored</p>
+      <h3 class="font-semibold text-lg">MOSKING TPU Back Cover for Samsung Galaxy S23 Ultra 5G</h3>
+      <p class="text-sm text-muted-foreground">50+ bought in past month</p>
+      <div class="flex items-center mt-2">
+        <span class="text-xl font-bold">₹699</span>
+        <span class="text-sm line-through ml-2">M.R.P: ₹1399</span>
+        <span class="text-sm text-green-600 ml-2">(50% off)</span>
+      </div>
+    
+      <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+        <a href="whatsapp://send?phone=+919773934950" target="_blank">
+            Buy Now
+            <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+        </a>
+    </button>
+    
+    </div>
+    
+    <div class="border p-4 rounded-lg shadow-sm">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA17pz66V9wzSyLs46EdSornorT0k2RNaqrnJWuev9SThQScIHloZURAD0ZXg9LZmXeMc&usqp=CAU" alt="Pikmine Samsung Galaxy M30s / M21 2021 Flip Cover" class="w-full h-48 object-cover mb-4">
+      <p class="text-sm text-muted-foreground">Sponsored</p>
+      <h3 class="font-semibold text-lg">Pikmine Samsung Galaxy M30s / M21 2021 Flip Cover</h3>
+      <p class="text-sm text-muted-foreground">6,125 ratings</p>
+      <div class="flex items-center mt-2">
+        <span class="text-xl font-bold">₹199</span>
+        <span class="text-sm line-through ml-2">M.R.P: ₹999</span>
+        <span class="text-sm text-green-600 ml-2">(80% off)</span>
+      </div>
+      <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+        <a href="whatsapp://send?phone=+919773934950" target="_blank">
+            Buy Now
+            <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+        </a>
+    </button>
+    
+    </div>
+    
+    <div class="border p-4 rounded-lg shadow-sm">
+      <img src="https://m.media-amazon.com/images/I/51ukXV3vT6L._SR600%2C315_PIWhiteStrip%2CBottomLeft%2C0%2C35_PIStarRatingTHREE%2CBottomLeft%2C360%2C-6_SR600%2C315_SCLZZZZZZZ_FMpng_BG255%2C255%2C255.jpg" alt="MOSKING TPU Back Cover Compatible for Samsung Galaxy A34" class="w-full h-48 object-cover mb-4">
+      <p class="text-sm text-muted-foreground">Sponsored</p>
+      <h3 class="font-semibold text-lg">MOSKING TPU Back Cover Compatible for Samsung Galaxy A34</h3>
+      <p class="text-sm text-muted-foreground">300+ bought in past month</p>
+      <div class="flex items-center mt-2">
+        <span class="text-xl font-bold">₹499</span>
+        <span class="text-sm line-through ml-2">M.R.P: ₹999</span>
+        <span class="text-sm text-green-600 ml-2">(50% off)</span>
+      </div>
+    
+      <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+        <a href="whatsapp://send?phone=+919773934950" target="_blank">
+            Buy Now
+            <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+        </a>
+    </button>
+    
+    </div>
+    
+    <div class="border p-4 rounded-lg shadow-sm">
+      <img src="https://m.media-amazon.com/images/I/81wupLdWxjL._AC_UL320_.jpg" alt="Oblivion Polyvinyl Chloride Pouch Cover Mobile Water Protector" class="w-full h-48 object-cover mb-4">
+      <h3 class="font-semibold text-lg">Oblivion Polyvinyl Chloride Pouch Cover Mobile Water Protector</h3>
+      <p class="text-sm text-muted-foreground">100+ bought in past month</p>
+      <div class="flex items-center mt-2">
+        <span class="text-xl font-bold">₹94</span>
+        <span class="text-sm line-through ml-2">M.R.P: ₹199</span>
+        <span class="text-sm text-green-600 ml-2">(53% off)</span>
+      </div>
+      <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+        <a href="whatsapp://send?phone=+919773934950" target="_blank">
+            Buy Now
+            <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+        </a>
+    </button>
+    
+    </div>
+    
+    <div class="border p-4 rounded-lg shadow-sm">
+      <img src="https://m.media-amazon.com/images/I/71kkg827f1S._AC_UL320_.jpg" alt="iTronix Waterproof Mobile Pouch Cover for All Mobiles" class="w-full h-48 object-cover mb-4">
+      <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded">Best seller</span>
+      <h3 class="font-semibold text-lg mt-2">iTronix Waterproof Mobile Pouch Cover for All Mobiles</h3>
+      <p class="text-sm text-muted-foreground">1k+ bought in past month</p>
+      <div class="flex items-center mt-2">
+        <span class="text-xl font-bold">₹129</span>
+        <span class="text-sm line-through ml-2">M.R.P: ₹499</span>
+        <span class="text-sm text-green-600 ml-2">(74% off)</span>
+      </div>
+      <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+        <a href="whatsapp://send?phone=+919773934950" target="_blank">
+            Buy Now
+            <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+        </a>
+    </button>
+    
+    </div>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 p-4">
+  <div class="bg-card text-card-foreground p-4 rounded-lg shadow-md">
+    <img src="https://m.media-amazon.com/images/I/61bOhEDkU7L._AC_UL320_.jpg" alt="Mi 5V Charger" class="w-full h-40 object-contain mb-4" />
+    <h2 class="text-lg font-semibold mb-2">Mi 5V Charger|10W Wall Charger with USB Cable</h2>
+    <p class="text-muted-foreground text-sm mb-2">1K+ bought in past month</p>
+    <p class="text-primary font-bold text-xl mb-2">₹499 <span class="line-through text-muted-foreground">₹599</span> (17% off)</p>
+    <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+      <a href="whatsapp://send?phone=+919773934950" target="_blank">
+          Buy Now
+          <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+      </a>
+  </button>
+  
+  </div>
+
+  <div class="bg-card text-card-foreground p-4 rounded-lg shadow-md">
+    <img src="https://m.media-amazon.com/images/I/41nEN7g6-pL._AC_UL320_.jpg" alt="boAt WCDV 22.5W Dual Port Charger" class="w-full h-40 object-contain mb-4" />
+    <h2 class="text-lg font-semibold mb-2">boAt WCDV 22.5W Dual Port Charger</h2>
+    <p class="text-muted-foreground text-sm mb-2">1K+ bought in past month</p>
+    <p class="text-primary font-bold text-xl mb-2">₹698 <span class="line-through text-muted-foreground">₹2,499</span> (72% off)</p>
+    <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+      <a href="whatsapp://send?phone=+919773934950" target="_blank">
+          Buy Now
+          <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+      </a>
+  </button>
+  
+  </div>
+
+  <div class="bg-card text-card-foreground p-4 rounded-lg shadow-md">
+    <img src="https://m.media-amazon.com/images/I/61NpCNPIEIL._AC_UL320_.jpg" alt="Sounce 80W Charging Cable USB to Type C" class="w-full h-40 object-contain mb-4" />
+    <h2 class="text-lg font-semibold mb-2">Sounce 80W Charging Cable USB to Type C</h2>
+    <p class="text-muted-foreground text-sm mb-2">3K+ bought in past month</p>
+    <p class="text-primary font-bold text-xl mb-2">₹199 <span class="line-through text-muted-foreground">₹499</span> (60% off)</p>
+    <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+      <a href="whatsapp://send?phone=+919773934950" target="_blank">
+          Buy Now
+          <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+      </a>
+  </button>
+  
+  </div>
+
+  <div class="bg-card text-card-foreground p-4 rounded-lg shadow-md">
+    <img src="https://m.media-amazon.com/images/I/7100MyxcglL._AC_UL320_.jpg" alt="Ambrane Unbreakable 3 in 1 USB Fast Charging Cable" class="w-full h-40 object-contain mb-4" />
+    <h2 class="text-lg font-semibold mb-2">Ambrane Unbreakable 3 in 1 USB Fast Charging Cable</h2>
+    <p class="text-muted-foreground text-sm mb-2">2K+ bought in past month</p>
+    <p class="text-primary font-bold text-xl mb-2">₹248 <span class="line-through text-muted-foreground">₹399</span> (38% off)</p>
+    <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+      <a href="whatsapp://send?phone=+919773934950" target="_blank">
+          Buy Now
+          <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+      </a>
+  </button>
+  
+  </div>
+
+  <div class="bg-card text-card-foreground p-4 rounded-lg shadow-md">
+    <img src="https://m.media-amazon.com/images/I/51zdlhBCKIL._AC_UL320_.jpg" alt="pTron Volta Dual Port 12W Smart USB Charger Adapter" class="w-full h-40 object-contain mb-4" />
+    <h2 class="text-lg font-semibold mb-2">pTron Volta Dual Port 12W Smart USB Charger Adapter</h2>
+    <p class="text-muted-foreground text-sm mb-2">200+ bought in past month</p>
+    <p class="text-primary font-bold text-xl mb-2">₹298 <span class="line-through text-muted-foreground">₹1,899</span> (84% off)</p>
+    <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+      <a href="whatsapp://send?phone=+919773934950" target="_blank">
+          Buy Now
+          <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+      </a>
+  </button>
+  
+  </div>
+  
+</div>
+
+  </body>
+</html>

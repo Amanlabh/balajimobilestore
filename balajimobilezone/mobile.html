@@ -1,0 +1,382 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+		<script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+		<script type="text/javascript">
+			window.tailwind.config = {
+				darkMode: ['class'],
+				theme: {
+					extend: {
+						colors: {
+							border: 'hsl(var(--border))',
+							input: 'hsl(var(--input))',
+							ring: 'hsl(var(--ring))',
+							background: 'hsl(var(--background))',
+							foreground: 'hsl(var(--foreground))',
+							primary: {
+								DEFAULT: 'hsl(var(--primary))',
+								foreground: 'hsl(var(--primary-foreground))'
+							},
+							secondary: {
+								DEFAULT: 'hsl(var(--secondary))',
+								foreground: 'hsl(var(--secondary-foreground))'
+							},
+							destructive: {
+								DEFAULT: 'hsl(var(--destructive))',
+								foreground: 'hsl(var(--destructive-foreground))'
+							},
+							muted: {
+								DEFAULT: 'hsl(var(--muted))',
+								foreground: 'hsl(var(--muted-foreground))'
+							},
+							accent: {
+								DEFAULT: 'hsl(var(--accent))',
+								foreground: 'hsl(var(--accent-foreground))'
+							},
+							popover: {
+								DEFAULT: 'hsl(var(--popover))',
+								foreground: 'hsl(var(--popover-foreground))'
+							},
+							card: {
+								DEFAULT: 'hsl(var(--card))',
+								foreground: 'hsl(var(--card-foreground))'
+							},
+						},
+					}
+				}
+			}
+		</script>
+		<style type="text/tailwindcss">
+			@layer base {
+				:root {
+					--background: 0 0% 100%;
+--foreground: 240 10% 3.9%;
+--card: 0 0% 100%;
+--card-foreground: 240 10% 3.9%;
+--popover: 0 0% 100%;
+--popover-foreground: 240 10% 3.9%;
+--primary: 240 5.9% 10%;
+--primary-foreground: 0 0% 98%;
+--secondary: 240 4.8% 95.9%;
+--secondary-foreground: 240 5.9% 10%;
+--muted: 240 4.8% 95.9%;
+--muted-foreground: 240 3.8% 46.1%;
+--accent: 240 4.8% 95.9%;
+--accent-foreground: 240 5.9% 10%;
+--destructive: 0 84.2% 60.2%;
+--destructive-foreground: 0 0% 98%;
+--border: 240 5.9% 90%;
+--input: 240 5.9% 90%;
+--ring: 240 5.9% 10%;
+--radius: 0.5rem;
+				}
+				.dark {
+					--background: 240 10% 3.9%;
+--foreground: 0 0% 98%;
+--card: 240 10% 3.9%;
+--card-foreground: 0 0% 98%;
+--popover: 240 10% 3.9%;
+--popover-foreground: 0 0% 98%;
+--primary: 0 0% 98%;
+--primary-foreground: 240 5.9% 10%;
+--secondary: 240 3.7% 15.9%;
+--secondary-foreground: 0 0% 98%;
+--muted: 240 3.7% 15.9%;
+--muted-foreground: 240 5% 64.9%;
+--accent: 240 3.7% 15.9%;
+--accent-foreground: 0 0% 98%;
+--destructive: 0 62.8% 30.6%;
+--destructive-foreground: 0 0% 98%;
+--border: 240 3.7% 15.9%;
+--input: 240 3.7% 15.9%;
+--ring: 240 4.9% 83.9%;
+				}
+			}
+		</style>
+  </head>
+  <body>
+
+<!--navbar-->
+<div class="bg-background text-foreground flex justify-between items-center p-4 shadow-lg">
+  <div class="flex items-center space-x-2"><span class="font-bold text-lg text-primary">Balaji mobile</span><span class="text-lg">zone</span></div>
+  <div class="hidden md:flex items-center space-x-6">
+    <a onclick="window.location.href = 'mobile.html'" class="hover:text-muted-foreground">Buy mobile phones</a>
+    <a onclick="window.location.href = 'home.html'"   class="hover:text-muted-foreground">Buy Home appliances</a>
+    <a onclick="window.location.href = 'asscesories.html'" class="hover:text-muted-foreground">Buy Mobile accessories</a>
+    <a href="#" class="hover:text-muted-foreground">Pricing</a>
+    <a onclick="window.location.href = 'index.html'" class="hover:text-muted-foreground">Home</a>
+    
+    <button class="bg-primary text-primary-foreground px-4 py-2 rounded-full hover:bg-primary/80">contact us</button>
+    <img aria-hidden="true" alt="globe-icon" src="https://openui.fly.dev/openui/24x24.svg?text=🌐" />
+  </div>
+  <div class="md:hidden">
+    <button id="menu-toggle" class="text-primary focus:outline-none">
+    <img aria-hidden="true" alt="menu-icon" src="https://openui.fly.dev/openui/24x24.svg?text=☰" />
+    </button>
+  </div>
+  </div>
+  
+  <div id="mobile-menu" class="md:hidden bg-background text-foreground p-4 space-y-4 hidden">
+  <a onclick="window.location.href = 'mobile.html'" class="block hover:text-muted-foreground">Buy mobile phones</a>
+  <a onclick="window.location.href = 'home.html'"  class="block hover:text-muted-foreground">Buy Home appliances</a>
+  <a onclick="window.location.href = 'asscesories.html'" class="block hover:text-muted-foreground">Buy Mobile accessoriesS</a>
+  <a href="#" class="block hover:text-muted-foreground">Pricing</a>
+  <a onclick="window.location.href = 'index.html'" class="block hover:text-muted-foreground">Home</a>
+  
+  </div>
+  <script>
+  document.getElementById('menu-toggle').addEventListener('click', function() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+  });
+  </script>
+  </div>
+  <!--mobiles-->
+    <div class="p-4">
+  <h2 class="text-2xl font-semibold">Mobiles</h2>
+  <p class="text-muted-foreground mb-4">Buy Now on Exlusive price</pre>.</p>
+  <div class="space-y-6">
+    
+    <div class="flex space-x-4 p-4 border rounded-lg">
+      <img src="https://cdn.zeebiz.com/sites/default/files/2023/08/31/258575-iqooz7prolaunchlive.jpg" alt="iQOO Z7 Pro 5G" class="w-32 h-32 object-cover">
+      <div class="flex-1">
+        <p class="text-sm text-muted-foreground">Sponsored</p>
+        <h3 class="text-lg font-semibold">iQOO Z7 Pro 5G (Blue Lagoon, 8GB RAM, 256GB Storage) | 3D Curved AMOLED Display | 4nm MediaTek Dimensity 7200 5G Processor | 64MP Aura Light OIS Camera | Segment's Slimmest & Lightest Smartphone</h3>
+        <div class="flex items-center space-x-2">
+          <span class="text-yellow-500">★★★★☆</span>
+          <span class="text-sm text-muted-foreground">6,434</span>
+        </div>
+        <p class="text-sm text-muted-foreground">5K+ bought in past month</p>
+        <p class="text-xl font-bold">₹23,998 <span class="line-through text-sm text-muted-foreground">₹27,999</span> <span class="text-green-500">(14% off)</span></p>
+        <p class="text-sm text-muted-foreground">Flat INR 2000 Off on HDFC BankCards</p>
+       
+        <p class="text-sm text-muted-foreground">Service: Installation</p>
+        <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+          <a href="whatsapp://send?phone=+919773934950" target="_blank">
+              Buy Now
+              <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+          </a>
+      </button>
+      
+      </div>
+    </div>
+    
+    <div class="flex space-x-4 p-4 border rounded-lg">
+      <img src="https://i03.appmifile.com/98_item_in/04/01/2024/1fcfdf47573677eee94bab44e38b7734.jpg" alt="Redmi Note 13 5G" class="w-32 h-32 object-cover">
+      <div class="flex-1">
+        <p class="text-sm text-muted-foreground">Sponsored</p>
+        <h3 class="text-lg font-semibold">Redmi Note 13 5G (Stealth Black, 6GB RAM, 128GB Storage) | 5G Ready | 120Hz Bezel-less AMOLED | 7.7mm Slimmest Note Ever | 108MP Pro-grade Camera</h3>
+        <div class="flex items-center space-x-2">
+          <span class="text-yellow-500">★★★★☆</span>
+          <span class="text-sm text-muted-foreground">624</span>
+        </div>
+        <p class="text-xl font-bold">₹16,999</p>
+        <p class="text-sm text-muted-foreground">Save extra with No Cost EMI</p>
+       
+        <p class="text-sm text-muted-foreground">Service: Installation</p>
+        <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+          <a href="whatsapp://send?phone=+919773934950" target="_blank">
+              Buy Now
+              <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+          </a>
+      </button>
+      
+        <p class="text-sm text-blue-500 mt-2">+2 colors/patterns</p>
+      </div>
+    </div>
+    
+    <div class="flex space-x-4 p-4 border rounded-lg">
+      <img src="https://m.media-amazon.com/images/I/71d1ytcCntL._AC_UF1000,1000_QL80_.jpg" alt="Redmi 13C" class="w-32 h-32 object-cover">
+      <div class="flex-1">
+        <h3 class="text-lg font-semibold">Redmi 13C (Stardust Black, 6GB RAM, 128GB Storage) | Powered by 4G MediaTek Helio G85 | 90Hz Display | 50MP AI Triple Camera</h3>
+        <div class="flex items-center space-x-2">
+          <span class="text-yellow-500">★★★★☆</span>
+          <span class="text-sm text-muted-foreground">5,029</span>
+        </div>
+        <p class="text-sm text-muted-foreground">5K+ bought in past month</p>
+        <p class="text-xl font-bold">₹8,499 <span class="line-through text-sm text-muted-foreground">₹13,999</span> <span class="text-green-500">(39% off)</span></p>
+     
+        <p class="text-sm text-muted-foreground">Service: Installation</p>
+        <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+          <a href="whatsapp://send?phone=+919773934950" target="_blank">
+              Buy Now
+              <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+          </a>
+      </button>
+      
+    </div>
+  </div>
+</div>
+
+<div class="bg-background text-foreground p-4">
+  <div class="space-y-6">
+    <div class="flex border-b border-border pb-6">
+      <img class="w-24 h-24 object-cover" src="https://ik.imagekit.io/3dqckpw4d/upload/iphone_15_Green1694597210Untitled%20design%20(25).png" alt="Apple iPhone 15 Plus (128 GB) - Green" />
+      <div class="ml-4 flex-1">
+        <div class="text-sm text-muted-foreground">Sponsored</div>
+        <h2 class="text-lg font-semibold">Apple iPhone 15 Plus (128 GB) - Green</h2>
+        <div class="flex items-center space-x-2">
+          <div class="text-yellow-500">★★★★☆</div>
+          <div class="text-sm text-muted-foreground">819</div>
+        </div>
+        <div class="text-sm text-muted-foreground">200+ bought in past month</div>
+        <div class="text-xl font-bold text-primary">₹81,999</div>
+        <div class="text-sm text-muted-foreground line-through">M.R.P.: ₹89,999</div>
+        <div class="text-sm text-muted-foreground">Flat INR 2000 off on SBICards</div>
+        <div class="flex items-center space-x-2">
+          <img class="w-4 h-4" src="https://placehold.co/16x16" alt="prime" />
+          
+        </div>
+        <div class="text-sm text-muted-foreground">Service: Installation</div>
+        <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+          <a href="whatsapp://send?phone=+919773934950" target="_blank">
+              Buy Now
+              <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+          </a>
+      </button>
+      
+        <div class="text-sm text-primary mt-2">+2 colors/patterns</div>
+      </div>
+    </div>
+
+    <div class="flex border-b border-border pb-6">
+      <img class="w-24 h-24 object-cover" src="https://imgs.search.brave.com/MEjAmg_ndTaLifwqZXzW_0bhADw4Iwsr_rtFyl9uL7g/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9mZG4u/Z3NtYXJlbmEuY29t/L2ltZ3Jvb3QvbmV3/cy8yMy8xMS9yZWRt/aS0xM2MtZ2xvYmFs/LWlzaC9uZXcvLTEy/MDAvZ3NtYXJlbmFf/MDAxLmpwZw" alt="Redmi 13C (Starfrost White, 4GB RAM, 128GB Storage)" />
+      <div class="ml-4 flex-1">
+        <h2 class="text-lg font-semibold">Redmi 13C (Starfrost White, 4GB RAM, 128GB Storage) | Powered by 4G MediaTek Helio G85 | 90Hz Display | 50MP AI Triple Camera</h2>
+        <div class="flex items-center space-x-2">
+          <div class="text-yellow-500">★★★★☆</div>
+          <div class="text-sm text-muted-foreground">5,029</div>
+        </div>
+        <div class="text-sm text-muted-foreground">5K+ bought in past month</div>
+        <div class="text-xl font-bold text-primary">₹7,699</div>
+        <div class="text-sm text-muted-foreground line-through">M.R.P.: ₹11,999</div>
+        <div class="text-sm text-muted-foreground">(36% off)</div>
+        <div class="flex items-center space-x-2">
+          <img class="w-4 h-4" src="https://placehold.co/16x16" alt="prime" />
+          
+        </div>
+        <div class="text-sm text-muted-foreground">Service: Installation</div>
+        <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+          <a href="whatsapp://send?phone=+919773934950" target="_blank">
+              Buy Now
+              <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+          </a>
+      </button>
+      
+      </div>
+    </div>
+
+    <div class="flex border-b border-border pb-6">
+      <img class="w-24 h-24 object-cover" src="https://imgs.search.brave.com/wGCzG7Sn64iD9kBj-ZdsYLEB8OWhNgNm5l7ywqNMqBU/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL1Mv/YXBsdXMtbWVkaWEt/bGlicmFyeS1zZXJ2/aWNlLW1lZGlhL2I4/ODJkMWRkLTc4NGYt/NDlkOC1hMWY3LTc0/MjcyODhlNmY0Yi5f/X0NSMCwwLDk3MCw2/MDBfUFQwX1NYOTcw/X1YxX19fLnBuZw" alt="Nokia G42 5G Powered by Snapdragon" />
+      <div class="ml-4 flex-1">
+        <h2 class="text-lg font-semibold">
+          Nokia G42 5G Powered by Snapdragon® 480 Plus 5G | 50MP Triple Rear AI Camera | 6GB RAM (4GB RAM + 2GB Virtual RAM) | 128GB Storage | 3-day Battery Life | 2 Years of Android Upgrades | SO
+          Purple
+        </h2>
+        <div class="flex items-center space-x-2">
+          <div class="text-yellow-500">★★★★☆</div>
+          <div class="text-sm text-muted-foreground">4,116</div>
+        </div>
+        <div class="text-sm text-muted-foreground">2K+ bought in past month</div>
+        <div class="text-xl font-bold text-primary">₹9,999</div>
+        <div class="text-sm text-muted-foreground line-through">M.R.P.: ₹12,999</div>
+        <div class="text-sm text-muted-foreground">(23% off)</div>
+        <div class="flex items-center space-x-2">
+          <img class="w-4 h-4" src="https://placehold.co/16x16" alt="prime" />
+         
+        </div>
+        <div class="text-sm text-muted-foreground">Service: Installation</div>
+        <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+          <a href="whatsapp://send?phone=+919773934950" target="_blank">
+              Buy Now
+              <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+          </a>
+      </button>
+      
+      </div>
+    </div>
+  </div>
+</div>
+<div class="p-4">
+  
+  
+      <div class="flex border border-border p-4 rounded-lg">
+        <img src="https://smartbuy-me.com/smartbuystore/medias/ABJ1501ST0255.jpg?context=c21hcnRidXliMmN8aW1hZ2VzfDIyMTIzfGltYWdlL2pwZWd8aW1hZ2VzL2g2MS9oYmMvODg5MTQ3MzE5OTEzNC5qcGd8Yzc0YzUzZDgxZGY0ZjhiZjE4YTA4ODE3YzFiMjI2YWI2NDJlY2FlMzkyMjVjMGFiN2UzYzFkMzM1ZDY4ZmQ1MA" alt="Apple iPhone 15 (128GB) - Black" class="w-24 h-24 object-cover mr-4" />
+        <div class="flex flex-col">
+          <span class="text-muted-foreground text-sm">Sponsored</span>
+          <h2 class="text-lg font-semibold">Apple iPhone 15 (128GB) - Black</h2>
+          <div class="flex items-center">
+            <span class="text-yellow-500">★★★★☆</span>
+            <span class="text-muted-foreground text-sm ml-2">1,745</span>
+          </div>
+          <span class="text-muted-foreground text-sm">1K+ bought in past month</span>
+          <div class="text-xl font-semibold text-primary mt-1">₹71,999</div>
+          <div class="text-muted-foreground text-sm">M.R.P.: ₹79,990 (10% off)</div>
+          <div class="text-muted-foreground text-sm">Flat INR 4000 off on SBI Cards</div>
+          <div class="flex items-center mt-2">
+            <img src="https://placehold.co/16x16" alt="prime" class="mr-1" />
+            
+          </div>
+          <div class="text-muted-foreground text-sm">Service: Installation</div>
+          <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+            <a href="whatsapp://send?phone=+919773934950" target="_blank">
+                Buy Now
+                <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+            </a>
+        </button>
+        
+          <a href="#" class="text-primary text-sm mt-1">+4 colors/patterns</a>
+        </div>
+      </div>
+  
+      <div class="flex border border-border p-4 rounded-lg">
+        <img src="https://rukminim2.flixcart.com/image/850/1000/ktketu80/mobile/q/h/8/iphone-13-mlpk3hn-a-apple-original-imag6vpywdtyhbkr.jpeg?q=90&crop=false" alt="Apple iPhone 13 (128GB) - Pink" class="w-24 h-24 object-cover mr-4" />
+        <div class="flex flex-col">
+          <span class="text-muted-foreground text-sm">Sponsored</span>
+          <h2 class="text-lg font-semibold">Apple iPhone 13 (128GB) - Pink</h2>
+          <div class="flex items-center">
+            <span class="text-yellow-500">★★★★☆</span>
+            <span class="text-muted-foreground text-sm ml-2">27,723</span>
+          </div>
+          <span class="text-muted-foreground text-sm">5K+ bought in past month</span>
+          <div class="text-destructive bg-destructive-foreground text-sm p-1 rounded mt-1 inline-block">Ends in 05:30:35</div>
+          <div class="text-xl font-semibold text-primary mt-1">₹48,799</div>
+          <div class="text-muted-foreground text-sm">M.R.P.: ₹59,990 (19% off)</div>
+          <div class="text-muted-foreground text-sm">Save extra with No Cost EMI</div>
+          <div class="flex items-center mt-2">
+            <img src="https://placehold.co/16x16" alt="prime" class="mr-1" />
+           
+          </div>
+          <div class="text-muted-foreground text-sm">Service: Installation</div>
+          <button class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">
+            <a href="whatsapp://send?phone=+919773934950" target="_blank">
+                Buy Now
+                <img alt="whatsapp logo" src="whatsapp.webp" class="w-5 h-5 ml-2 inline-block">
+            </a>
+        </button>
+        
+          <a href="#" class="text-primary text-sm mt-1">+4 colors/patterns</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Whatsapp chat support-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+  <!-- * *                               SB Forms JS                               * *-->
+  <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+  <div class="fixed bottom-4 right-4">
+	  <a href="whatsapp://send?phone=+919773934950" target="_blank">
+		  <button class="bg-white shadow-lg rounded-full p-0 dark:bg-zinc-800">
+			  <img alt="whatsapp logo" src="whatsapp.webp" class="w-12 h-13">
+		  </button>
+	  </a>
+  </body>
+</html>
