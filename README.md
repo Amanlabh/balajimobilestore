@@ -10,7 +10,7 @@ This repository contains the source code for the Balaji Mobile e-commerce websit
 ## Developer
 - **Developer Name:** Amanlabh
 - **GitHub:** [Amanlabh GitHub Profile](https://github.com/amanlabh)
-- **LinkedIn:** [Amanlabh LinkedIn Profile]([https://www.linkedin.com/in/amanlabh/](https://www.linkedin.com/in/aman-labh-95a205216/))
+- **LinkedIn:** [Amanlabh LinkedIn Profile]([https://www.linkedin.com/in/amanlabh/](https://www.linkedin.com/in/aman-labh-95a205216/)
 
 ## Technologies Used
 - HTML
