@@ -3,7 +3,8 @@ Certainly! Here's the updated README file with a license section:
 ---
 
 # Balaji Mobile E-commerce Website
-Demo site : balajimobile.netlify.app
+ **Demo site:** [balajimobilezone](https://balajimobile.netlify.app/)
+
 ## Overview
 This repository contains the source code for the Balaji Mobile e-commerce website. Balaji Mobile is an online platform for buying mobile phones and accessories.
 
